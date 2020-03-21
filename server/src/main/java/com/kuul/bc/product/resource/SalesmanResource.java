@@ -15,9 +15,10 @@ import java.util.List;
 @Path("salesman")
 public class SalesmanResource {
 
-    private static Product pencil = new Product("Stift", "Gut zu schreiben", 5);
-    private static Product flower = new Product("Blume", "Riecht gut", 10);
-    private static Product soap = new Product("Seife", "Dreck blitzschnell weg", 3);
+    private static String salesman = "Max Musterverkäufer";
+    private static Product pencil = new Product("Stift", "Gut zu schreiben", 5, salesman, 0.99);
+    private static Product flower = new Product("Blume", "Riecht gut", 10, salesman, 1.45);
+    private static Product soap = new Product("Seife", "Dreck blitzschnell weg", 3, salesman, 3.99);
 
     /**
      * Returns the current {@link RadioState} as a {@link Response} object and logs the access.
@@ -25,10 +26,10 @@ public class SalesmanResource {
      * @return the current {@link RadioState}
      */
     @POST
-    @Path("products/{product}/{description}/{amount}")
+    @Path("products/{product}/{description}/{amount}/{salesman}/{price}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response putProduct(@PathParam("product") String product, @PathParam("description") String description, @PathParam("amount") long amount) {
-        Product newProduct = new Product(product, description, amount);
+    public Response putProduct(@PathParam("product") String product, @PathParam("description") String description, @PathParam("amount") long amount, @PathParam("salesman") String salesman, @PathParam("price") double price) {
+        Product newProduct = new Product(product, description, amount, salesman, price);
 
         List<Product> listOfProducts = Arrays.asList(pencil, flower, soap);
         listOfProducts.add(newProduct);

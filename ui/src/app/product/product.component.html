@@ -3,10 +3,12 @@
     <th>Produkt</th>
     <th>Stückzahl</th>
     <th>Produktbeschreibung</th>
+    <th>Preis</th>
   </tr>
   <tr *ngFor="let product of productList | async">
     <td>{{product.productId}}</td>
     <td>{{product.amount}}</td>
     <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
   </tr>
 </table>
