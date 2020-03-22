@@ -1,0 +1,19 @@
+<base href="/roles">
+
+<div id="content">
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>Kunde</a>
+      <ng-template ngbNavContent>
+        <app-client></app-client>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Händler</a>
+      <ng-template ngbNavContent>
+        <app-salesman></app-salesman>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

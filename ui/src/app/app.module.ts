@@ -3,15 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import { ClientComponent } from './client/client.component';
+import { ClientComponent } from './roles/client/client.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule, Routes } from '@angular/router';
-import { SalesmanComponent } from './salesman/salesman.component';
+import { SalesmanComponent } from './roles/salesman/salesman.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { RolesComponent } from './roles/roles.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'roles', component: RolesComponent, pathMatch: 'full' }
 ];
 
 
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ClientComponent,
-    SalesmanComponent
+    SalesmanComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,
