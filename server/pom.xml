@@ -21,21 +21,18 @@
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-multipart</artifactId>
             <version>${version.jersey}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
             <version>${version.jersey}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
             <version>${version.jersey}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
