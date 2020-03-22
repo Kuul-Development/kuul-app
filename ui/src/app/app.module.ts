@@ -10,10 +10,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SalesmanComponent } from './roles/salesman/salesman.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { RolesComponent } from './roles/roles.component';
+import {AccountComponent} from "./account/account.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'roles', component: RolesComponent, pathMatch: 'full' }
+  { path: 'roles', component: RolesComponent, pathMatch: 'full' },
+  { path: 'account', component: AccountComponent, pathMatch: 'full' }
 ];
 
 
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     ClientComponent,
     SalesmanComponent,
-    RolesComponent
+    RolesComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
