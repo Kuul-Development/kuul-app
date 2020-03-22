@@ -1,0 +1,85 @@
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Calibri, Arial, Tahoma;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#searchbox {
+  border-radius: 10px;
+  margin: 0px 10px 5px auto;
+  max-width: 300px;
+}
+
+#header {
+  width: 900px;
+  margin: auto;
+  border: 0px solid #000;
+}
+
+#logo {
+  width: 400 px;
+  float: left;
+  border: 0px solid #000;
+}
+
+#hsubscribe {
+  float: right;
+  border: 0px solid #000;
+}
+
+#menue_search {
+  width: 900 px;
+  margin: 0px auto 0px auto;
+  border: 0px solid #000;
+  clear: both;
+}
+
+#navbar {
+  width: 900 px;
+  margin: 0px auto 0px auto;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  clear: both;
+}
+
+#content {
+  width: 900 px;
+  margin: 0px 10px 0px 10px;
+  border: 0px solid #000;
+  clear: both;
+}
+
+#contentleft {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  float: left;
+  border: 0px solid #000;
+}
+
+#sidebar {
+  width: 250 px;
+  float: right;
+  border: 0px solid #000;
+}
+
+#footer {
+  width: 900 px;
+  margin: 0px auto 0px auto;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  clear: both;
+}
+
+.icon-bar > * {
+  margin-right: 30px;
+}
+
+.icon-bar > *:last-child {
+  margin-right: 0px;
+}

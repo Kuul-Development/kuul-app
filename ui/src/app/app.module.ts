@@ -6,6 +6,7 @@ import { ProductComponent } from './product/product.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ClientComponent } from './client/client.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
