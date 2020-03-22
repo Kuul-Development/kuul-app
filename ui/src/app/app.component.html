@@ -1,7 +1,7 @@
 <body>
 <header>
   <div id="logo">
-    <a routerLink="/" routerLinkActive="active"><img src="assets/images/Logo.png" alt="Kuules Logo"></a>
+    <a routerLink="/roles" routerLinkActive="active"><img src="assets/images/Logo.png" alt="Kuules Logo"></a>
   </div>
   <div id="hsubscribe" class="icon-bar">
 			<span style="font-size: 3em; color: black;">
@@ -43,23 +43,7 @@
 			</span>
   </p>
 </nav>
-<div id="content">
-  <ul ngbNav #nav="ngbNav" class="nav-tabs">
-    <li [ngbNavItem]="1">
-      <a ngbNavLink>Kunde</a>
-      <ng-template ngbNavContent>
-        <app-client></app-client>
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="2">
-      <a ngbNavLink>Händler</a>
-      <ng-template ngbNavContent>
-        <app-salesman></app-salesman>
-      </ng-template>
-    </li>
-  </ul>
-  <div [ngbNavOutlet]="nav" class="mt-2"></div>
-</div>
+<router-outlet></router-outlet>
 <footer>
   <p>KUUL - App für kleine Unternehmen und Lieferanten</p>
 </footer>
