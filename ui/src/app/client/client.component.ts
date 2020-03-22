@@ -4,7 +4,7 @@ import {ProductService} from "../product/product.service";
 import {Product} from "../product/product.component";
 
 @Component({
-  selector: 'app-customer',
+  selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css']
 })

@@ -1,0 +1,7 @@
+<form [formGroup]="salesmanAddForm" (ngSubmit)="onSalesmanAddClick()">
+  <div>
+    <label>Geschäftstyp:</label>
+    <input type="text" formControlName="salesman">
+  </div>
+  <button type="submit" class="btn btn-primary">Händler hinzufügen</button>
+</form>
