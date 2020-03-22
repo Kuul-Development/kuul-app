@@ -44,25 +44,23 @@
   </p>
 </nav>
 <div id="content">
-  <div id="contentleft">
-    <ul ngbNav #nav="ngbNav" class="nav-tabs">
-      <li [ngbNavItem]="1">
-        <a ngbNavLink>Client</a>
-        <ng-template ngbNavContent>
-          <app-product></app-product>
-        </ng-template>
-      </li>
-      <li [ngbNavItem]="2">
-        <a ngbNavLink>Händler</a>
-        <ng-template ngbNavContent>
-          <app-salesman></app-salesman>
-        </ng-template>
-      </li>
-    </ul>
-    <div [ngbNavOutlet]="nav" class="mt-2"></div>
-  </div>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>Kunde</a>
+      <ng-template ngbNavContent>
+        <app-client></app-client>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Händler</a>
+      <ng-template ngbNavContent>
+        <app-salesman></app-salesman>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
 </div>
 <footer>
-  <p align="center">Kuul e.V. - Teststr. 13 - 12345 Germany</p>
+  <p>KUUL - App für kleine Unternehmen und Lieferanten</p>
 </footer>
 </body>

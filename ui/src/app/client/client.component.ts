@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {ProductService} from "../product/product.service";
-import {Product} from "../product/product.component";
+import {ClientService} from "./client.service";
 
 @Component({
   selector: 'app-client',
@@ -12,7 +11,7 @@ export class ClientComponent implements OnInit {
 
   productList: Observable<Product[]>;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ClientService) { }
 
   ngOnInit() {
     this.productList = this.productService.getAllProducts();
@@ -21,5 +20,12 @@ export class ClientComponent implements OnInit {
   ngOnClick() {
 
   }
+}
 
+export class Product {
+  productId: string;
+  amount: number;
+  description: string;
+  salesman: string;
+  price: number;
 }
