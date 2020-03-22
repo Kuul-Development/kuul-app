@@ -12,20 +12,23 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("supplier")
-public class SupplierResource {
+/**
+ * Resource class for the supplier view
+ */
+@Path("deliver")
+public class SupplierViewResource {
 
     /**
      * Get the whole catalogue of all available products
      */
     @GET
-    @Path("getOrders")
+    @Path("getorders")
     @Produces(MediaType.APPLICATION_JSON)
     public Response retrieveListOfProducts() {
-        ClientResource client = new ClientResource();
-        List<Order> orders = client.getOrders();
+        ClientViewResource client = new ClientViewResource();
+        List<Order> allOrders = client.getOrders();
         return Response
-                .ok(orders, MediaType.APPLICATION_JSON)
+                .ok(allOrders, MediaType.APPLICATION_JSON)
                 .build();
     }
 
@@ -35,8 +38,8 @@ public class SupplierResource {
     @PUT
     @Path("done")
     @Produces(MediaType.APPLICATION_JSON)
-    public static Response updateRadioState(@QueryParam("OrderId") long orderId) {
-        ClientResource client = new ClientResource();
+    public static Response updateRadioState(@QueryParam("orderId") long orderId) {
+        ClientViewResource client = new ClientViewResource();
         Order order = client.getOrders().stream().filter(o -> o.getOrderId() == orderId).collect(Collectors.toList()).get(0);
         order.setDone(true);
         return Response

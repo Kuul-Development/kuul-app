@@ -1,8 +1,11 @@
 package com.kuul.bc.product.dto;
 
+/**
+ * Class to represent a product
+ */
 public class Product {
 
-    private String productId;
+    private String product;
     private String description;
     private long amount;
     private double price;
@@ -10,15 +13,15 @@ public class Product {
     public Product() {
     }
 
-    public Product(String productId, String description, long amount, double price) {
-        this.productId = productId;
+    public Product(String product, String description, long amount, double price) {
+        this.product = product;
         this.description = description;
         this.amount = amount;
         this.price = price;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getProduct() {
+        return product;
     }
 
     public String getDescription() {
@@ -33,8 +36,8 @@ public class Product {
         return price;
     }
 
-    void setProductId(String productId) {
-        this.productId = productId;
+    void setProduct(String product) {
+        this.product = product;
     }
 
     void setDescription(String description) {
