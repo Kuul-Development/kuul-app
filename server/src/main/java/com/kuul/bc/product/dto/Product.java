@@ -7,7 +7,6 @@ public class Product {
     private long amount;
 
     public Product() {
-
     }
 
     public Product(String productId, String description, long amount) {

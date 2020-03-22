@@ -11,16 +11,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Path("client")
 public class ClientResource {
 
     private static Logger logger = org.slf4j.LoggerFactory.getLogger(ClientResource.class);
-
-    // TODO PeKr This solution is dangerous and should be replaced by a database
-    private static Product pencil = new Product("Stift", "Gut zu schreiben", 5);
-    private static Product flower = new Product("Blume", "Riecht gut", 10);
-    private static Product soap = new Product("Seife", "Dreck blitzschnell weg", 3);
 
     /**
      * Returns the current {@link RadioState} as a {@link Response} object and logs the access.
@@ -28,12 +24,13 @@ public class ClientResource {
      * @return the current {@link RadioState}
      */
     @GET
-    @Path("products")
+    @Path("getcatalogue")
     @Produces(MediaType.APPLICATION_JSON)
     public Response retrieveListOfProducts() {
-        List<Product> listOfProducts = Arrays.asList(pencil, flower, soap);
+        SalesmanResource salesman = new SalesmanResource();
+        Map<String, List<Product>> catalogue = salesman.getCatalogue();
         return Response
-                .ok(listOfProducts, MediaType.APPLICATION_JSON)
+                    .ok(catalogue, MediaType.APPLICATION_JSON)
                 .build();
     }
 }

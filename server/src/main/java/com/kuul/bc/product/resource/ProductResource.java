@@ -46,8 +46,8 @@ public class ProductResource {
     @PUT
     @Path("state")
     @Produces(MediaType.APPLICATION_JSON)
-    public static Response updateRadioState(@QueryParam("active") boolean active) {
-        radioState.setActive(active);
+    public static Response updateRadioState(@QueryParam("active") String active) {
+        radioState.setActive(true);
         logger.info("Accessing endpoint state with PUT, new state: {}", active);
         return Response
                 .ok(radioState, MediaType.APPLICATION_JSON)
