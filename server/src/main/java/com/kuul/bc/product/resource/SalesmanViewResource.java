@@ -1,6 +1,7 @@
 package com.kuul.bc.product.resource;
 
 import com.kuul.bc.product.dto.Product;
+import com.kuul.bc.product.dto.Salesman;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -13,18 +14,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-@Path("salesman")
-public class SalesmanResource {
-    private static Map<String, List<Product>> catalogue = new HashMap<>();
+/**
+ * Resource class for the salesman view
+ */
+@Path("sell")
+public class SalesmanViewResource {
+    private static Map<Salesman, List<Product>> catalogue = new HashMap<>();
 
     /**
      * Add a salesman to the catalogue
      */
     @PUT
-    @Path("addsalesman")
-    public static void addSalesman(@QueryParam("salesman") String salesman) {
-        catalogue.put(salesman, new ArrayList<>());
+    @Path("add")
+    public static Response addSalesman(@QueryParam("salesman") String salesman) {
+        int size = catalogue.keySet().size();
+        Salesman newSalesman = new Salesman(size+1,salesman);
+        catalogue.put(newSalesman, new ArrayList<>());
+
+        return Response
+                .ok(newSalesman, MediaType.APPLICATION_JSON)
+                .build();
     }
 
     /**
@@ -33,13 +44,13 @@ public class SalesmanResource {
     @PUT
     @Path("addproduct")
     @Produces(MediaType.APPLICATION_JSON)
-    public static Response updateRadioState(@QueryParam("salesman") String salesman,
+    public static Response addProduct(@QueryParam("id") long id,
                                             @QueryParam("product") String product,
                                             @QueryParam("desc") String description,
                                             @QueryParam("amount") long amount,
                                             @QueryParam("price") double price) {
 
-
+        Salesman salesman = retrieveSalesmanFromCatalogue(id);
         Product newProduct = new Product(product, description, amount, price);
         catalogue.get(salesman).add(newProduct);
 
@@ -54,13 +65,26 @@ public class SalesmanResource {
     @GET
     @Path("getstore")
     @Produces(MediaType.APPLICATION_JSON)
-    public static Response getstore(@QueryParam("salesman") String salesman) {
+    public static Response getStore(@QueryParam("id") long id) {
+        Salesman salesman = catalogue.keySet()
+                                     .stream()
+                                     .filter(s -> s.getId() == id)
+                                     .collect(Collectors.toList())
+                                     .get(0);
         return Response
                 .ok(catalogue.get(salesman), MediaType.APPLICATION_JSON)
                 .build();
     }
 
-    public Map<String, List<Product>> getCatalogue() {
+    public Map<Salesman, List<Product>> getCatalogue() {
         return catalogue;
+    }
+
+    private static Salesman retrieveSalesmanFromCatalogue(long id) {
+        return catalogue.keySet()
+                        .stream()
+                        .filter(s -> s.getId() == id)
+                        .collect(Collectors.toList())
+                        .get(0);
     }
 }

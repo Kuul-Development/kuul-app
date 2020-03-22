@@ -1,24 +1,27 @@
 package com.kuul.bc.product.dto;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
+/**
+ * class to represent a registered order for client at salesman
+ */
 public class Order {
     private long orderId;
-    private String supplierId;
-    private List<Product> listOfOrderedProducts = new ArrayList<>();
+    private Client client;
+    private Map<Salesman, List<Product>> listOfOrderedProducts = new HashMap<> ();
     private boolean done = false;
 
     public Order() {
 
     }
 
-    public Order(String supplier, Product product) {
-        Random rand = new Random();
-        this.orderId = 1 + rand.nextInt(100);
-        this.supplierId = supplier;
-        this.listOfOrderedProducts.add(product);
+    public Order(long id, Client client, Salesman salesman, Product product) {
+        this.orderId = id;
+        this.client = client;
+        this.listOfOrderedProducts.put(salesman, Collections.singletonList(product));
     }
 
     public long getOrderId() {
@@ -29,19 +32,19 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getSupplierId() {
-        return supplierId;
+    public Client getClient() {
+        return client;
     }
 
-    public void setSupplierId(String supplierId) {
-        this.supplierId = supplierId;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public List<Product> getListOfOrderedProducts() {
+    public Map<Salesman, List<Product>> getListOfOrderedProducts() {
         return listOfOrderedProducts;
     }
 
-    public void setListOfOrderedProducts(List<Product> listOfOrderedProducts) {
+    public void setListOfOrderedProducts(Map<Salesman, List<Product>> listOfOrderedProducts) {
         this.listOfOrderedProducts = listOfOrderedProducts;
     }
 
