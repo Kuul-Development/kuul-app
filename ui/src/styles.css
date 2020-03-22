@@ -3,3 +3,25 @@
 body {
   padding: 20px;
 }
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  width: 900px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  clear: both;
+}
+
+header {
+  width: 900px;
+  margin: auto;
+  border: 0 solid #000;
+}
+
+body {
+  width: 900px;
+  margin: 0 auto 0 auto;
+  border: 0 solid #000;
+  clear: both;
+}
