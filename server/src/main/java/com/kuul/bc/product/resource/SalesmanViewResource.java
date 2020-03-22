@@ -39,6 +39,17 @@ public class SalesmanViewResource {
     }
 
     /**
+     * Get all available salesmen
+     */
+    @GET
+    @Path("getallsalesmen")
+    public static Response getAllSalesmen() {
+        return Response
+                .ok(catalogue.keySet(), MediaType.APPLICATION_JSON)
+                .build();
+    }
+
+    /**
      * Add a product to the catalogue of a certain salesman
      */
     @PUT
