@@ -18,6 +18,18 @@ import java.util.Map;
 public class SalesmanResource {
     private static Map<String, List<Product>> catalogue = new HashMap<>();
 
+    /**
+     * Add a salesman to the catalogue
+     */
+    @PUT
+    @Path("addsalesman")
+    public static void addSalesman(@QueryParam("salesman") String salesman) {
+        catalogue.put(salesman, new ArrayList<>());
+    }
+
+    /**
+     * Add a product to the catalogue of a certain salesman
+     */
     @PUT
     @Path("addproduct")
     @Produces(MediaType.APPLICATION_JSON)
@@ -36,12 +48,9 @@ public class SalesmanResource {
                 .build();
     }
 
-    @PUT
-    @Path("addsalesman")
-    public static void addSalesman(@QueryParam("salesman") String salesman) {
-        catalogue.put(salesman, new ArrayList<>());
-    }
-
+    /**
+     * Get the view on a catalogue of a certain salesman
+     */
     @GET
     @Path("getstore")
     @Produces(MediaType.APPLICATION_JSON)

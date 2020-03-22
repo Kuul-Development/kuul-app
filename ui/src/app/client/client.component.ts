@@ -18,4 +18,8 @@ export class ClientComponent implements OnInit {
     this.productList = this.productService.getAllProducts();
   }
 
+  ngOnClick() {
+
+  }
+
 }
