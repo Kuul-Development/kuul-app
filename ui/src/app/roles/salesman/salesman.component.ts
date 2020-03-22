@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SalesmanService} from "./salesman.service";
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-salesman',
@@ -9,6 +10,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SalesmanComponent implements OnInit {
   salesmanAddForm: FormGroup;
+  salesmanAddProductForm: FormGroup;
+
+  salesmanList: Observable<Salesman[]>;
+  productsOfSalesman: Observable<Product[]>;
 
   constructor(private salesmanService: SalesmanService, private formBuilder: FormBuilder) { }
 
@@ -16,9 +21,37 @@ export class SalesmanComponent implements OnInit {
     this.salesmanAddForm = this.formBuilder.group({
       salesman: ''
     });
+    this.salesmanList = this.salesmanService.getAllSalesmen();
+    this.salesmanAddProductForm = this.formBuilder.group({
+      id: '',
+      product: '',
+      desc: '',
+      amount: '',
+      price: ''
+    });
+    this.productsOfSalesman = this.salesmanService.getAllProducts(this.salesmanAddProductForm.value.id);
   }
 
-  public onSalesmanAddClick() {
+  public onAddSalesman() {
     this.salesmanService.addNewSalesman(this.salesmanAddForm.value.salesman);
+    this.salesmanList = this.salesmanService.getAllSalesmen();
   }
+
+  public onAddProductToSalesman() {
+    let input = this.salesmanAddProductForm.value;
+    this.salesmanService.addNewProduct(input.id, input.product, input.desc, input.amount, input.price);
+    this.productsOfSalesman = this.salesmanService.getAllProducts(input.id);
+  }
+}
+
+export class Salesman {
+  id: number;
+  name: string;
+}
+
+export class Product {
+  product: string;
+  amount: number;
+  description: string;
+  price: number;
 }

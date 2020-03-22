@@ -1,7 +1,65 @@
-<form [formGroup]="salesmanAddForm" (ngSubmit)="onSalesmanAddClick()">
+<form [formGroup]="salesmanAddForm" (ngSubmit)="onAddSalesman()">
   <div>
     <label>Geschäftstyp:</label>
     <input type="text" formControlName="salesman">
   </div>
   <button type="submit" class="btn btn-primary">Händler hinzufügen</button>
 </form>
+<br>
+<br>
+<table>
+  <tr>
+    <th>ID des Händlers</th>
+    <th>Händler</th>
+
+  </tr>
+  <tr *ngFor="let dealer of salesmanList | async">
+    <td>{{dealer.id}}</td>
+    <td>{{dealer.name}}</td>
+  </tr>
+  <tr>
+    <td><input type="number" min="0"></td>
+    <td><input type="text"></td>
+  </tr>
+</table>
+<br>
+<br>
+<form [formGroup]="salesmanAddProductForm" (ngSubmit)="onAddProductToSalesman()">
+  <tr>
+    <th>ID des Händlers</th>
+    <th>Produkt</th>
+    <th>Produktbeschreibung</th>
+    <th>Menge</th>
+    <th>Preis</th>
+  </tr>
+  <tr>
+    <td><input type="number" min="1" formControlName="id"></td>
+    <td><input type="text" formControlName="product"></td>
+    <td><input type="text" formControlName="desc"></td>
+    <td><input type="number" max="0" formControlName="amount"></td>
+    <td><input type="number" max="0" formControlName="price"></td>
+  </tr>
+<button type="submit" class="btn btn-primary">Produkt hinzufügen</button>
+</form>
+<br>
+<br>
+<table>
+  <tr>
+    <th>Produkt</th>
+    <th>Stückzahl</th>
+    <th>Produktbeschreibung</th>
+    <th>Preis</th>
+  </tr>
+  <tr *ngFor="let product of productsOfSalesman | async">
+    <td>{{product.product}}</td>
+    <td>{{product.amount}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
+  </tr>
+  <tr>
+    <td><input type="text"></td>
+    <td><input type="number" min="0"></td>
+    <td><input type="text"></td>
+    <td><input type="number" max="0"></td>
+  </tr>
+</table>
