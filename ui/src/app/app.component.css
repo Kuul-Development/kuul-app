@@ -1,78 +1,66 @@
 
 body {
-  margin: 0px;
-  padding: 0px;
-  font-family: Calibri, Arial, Tahoma;
+  padding: 0;
+  font-family: Calibri, Arial, Tahoma, serif;
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 #searchbox {
   border-radius: 10px;
-  margin: 0px 10px 5px auto;
+  margin: 0 10px 5px auto;
   max-width: 300px;
 }
 
 header {
   width: 900px;
   margin: auto;
-  border: 0px solid #000;
+  border: 0 solid #000;
 }
 
 #logo {
-  width: 400 px;
+  width: 400px;
   float: left;
-  border: 0px solid #000;
+  border: 0 solid #000;
 }
 
 #hsubscribe {
   float: right;
-  border: 0px solid #000;
+  border: 0 solid #000;
 }
 
 #menue_search {
-  width: 900 px;
-  margin: 0px auto 0px auto;
-  border: 0px solid #000;
+  width: 900px;
+  margin: 0 auto 0 auto;
+  border: 0 solid #000;
   clear: both;
 }
 
 nav {
-  width: 900 px;
-  margin: 0px auto 0px auto;
+  width: 900px;
+  margin: 0 auto 0 auto;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   clear: both;
 }
 
 #content {
-  width: 900 px;
-  margin: 0px 10px 0px 10px;
-  border: 0px solid #000;
+  width: 900px;
+  margin: 20px auto 20px auto;
+  border: 0 solid #000;
   clear: both;
 }
 
-#contentleft {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
-  float: left;
-  border: 0px solid #000;
-}
-
 #sidebar {
-  width: 250 px;
+  width: 250px;
   float: right;
-  border: 0px solid #000;
+  border: 0 solid #000;
 }
 
 footer {
-  width: 900 px;
-  margin: 0px auto 0px auto;
+  width: 900px;
+  margin: 0 auto 0 auto;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
   clear: both;
 }
 
@@ -81,5 +69,5 @@ footer {
 }
 
 .icon-bar > *:last-child {
-  margin-right: 0px;
+  margin-right: 0;
 }
