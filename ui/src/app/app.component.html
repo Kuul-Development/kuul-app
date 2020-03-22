@@ -1,7 +1,7 @@
 <body>
 <header>
   <div id="logo">
-    <p><img src="assets/images/Logo.png" alt="Kuules Logo"></p>
+    <a routerLink="/" routerLinkActive="active"><img src="assets/images/Logo.png" alt="Kuules Logo"></a>
   </div>
   <div id="hsubscribe" class="icon-bar">
 			<span style="font-size: 3em; color: black;">
@@ -53,9 +53,9 @@
         </ng-template>
       </li>
       <li [ngbNavItem]="2">
-        <a ngbNavLink>Salesman</a>
+        <a ngbNavLink>Händler</a>
         <ng-template ngbNavContent>
-          <app-customer></app-customer>
+          <app-salesman></app-salesman>
         </ng-template>
       </li>
     </ul>
