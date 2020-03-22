@@ -1,49 +1,33 @@
 <body>
+
 <header>
   <div id="logo">
-    <a routerLink="/roles" routerLinkActive="active"><img src="assets/images/Logo.png" alt="Kuules Logo"></a>
+    <a routerLink="/roles" routerLinkActive="active"><img src="../assets/images/Logo.png" alt="Kuules Logo"></a>
   </div>
   <div id="hsubscribe" class="icon-bar">
 			<span style="font-size: 3em; color: black;">
         <fa-icon [icon]="faShoppingBag"></fa-icon>
 			</span>
+    <a routerLink="/account" routerLinkActive="active">
     <span style="font-size: 3em; color: black;">
 				<fa-icon [icon]="faUser"></fa-icon>
 			</span>
+    </a>
   </div>
 </header>
+
 <div id="menue_search">
 		<span style="font-size: 2em; color: black;">
 			<fa-icon [icon]="faBars"></fa-icon>
 		</span>
   <span style="font-size: 2em; color: black; float: right">
-			<input type="text" id="searchbox" name="searchbox" size="60" align="right">
+			<input type="text" id="searchbox" name="searchbox" size="60">
 			<fa-icon [icon]="faSearch"></fa-icon>
 		</span>
 </div>
-<nav>
-  <p align="center" class="icon-bar">
-			<span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faTshirt"></fa-icon>
-			</span>
-    <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faPencilRuler"></fa-icon>
-			</span>
-    <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faBook"></fa-icon>
-			</span>
-    <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faChess"></fa-icon>
-			</span>
-    <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faCarrot"></fa-icon>
-			</span>
-    <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faPlug"></fa-icon>
-			</span>
-  </p>
-</nav>
+
 <router-outlet></router-outlet>
+
 <footer>
   <p>KUUL - App für kleine Unternehmen und Lieferanten</p>
 </footer>

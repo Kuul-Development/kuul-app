@@ -1,18 +1,5 @@
 import {Component} from '@angular/core';
-import {
-  faCoffee,
-  faShoppingBag,
-  faUser,
-  faBars,
-  faSearch,
-  faTshirt,
-  faPencilRuler,
-  faBook,
-  faChess,
-  faCarrot,
-  faPlug,
-  faMapMarkerAlt
-} from '@fortawesome/free-solid-svg-icons';
+import {faShoppingBag, faUser, faBars, faSearch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -20,17 +7,8 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Kuul-App';
-  faCoffee = faCoffee;
-  faShoppingBag = faShoppingBag;
-  faUser = faUser;
   faBars = faBars;
+  faUser = faUser;
+  faShoppingBag = faShoppingBag;
   faSearch = faSearch;
-  faTshirt = faTshirt;
-  faPencilRuler = faPencilRuler;
-  faBook = faBook;
-  faChess = faChess;
-  faCarrot = faCarrot;
-  faPlug = faPlug;
-  faMapMarkerAlt = faMapMarkerAlt;
 }
