@@ -20,13 +20,13 @@ public class SalesmanResource {
 
     @PUT
     @Path("addproduct")
+    private static Product soap = new Product("Seife", "Dreck blitzschnell weg", 3, salesman, 3.99);
     @Produces(MediaType.APPLICATION_JSON)
     public static Response updateRadioState(@QueryParam("salesman") String salesman,
                                             @QueryParam("product") String product,
                                             @QueryParam("desc") String description,
                                             @QueryParam("amount") long amount) {
 
-        Product newProduct = new Product(product, description, amount);
         catalogue.get(salesman).add(newProduct);
 
         return Response

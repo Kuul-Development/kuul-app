@@ -3,22 +3,36 @@
     <th>Produkt</th>
     <th>Stückzahl</th>
     <th>Produktbeschreibung</th>
+    <th>Verkäufer</th>
     <th>Preis</th>
+    <th>Anzahl</th>
   </tr>
   <tr *ngFor="let product of productList | async">
     <td>{{product.productId}}</td>
     <td>{{product.amount}}</td>
     <td>{{product.description}}</td>
+    <td>{{product.salesman}}</td>
     <td>{{product.price}}</td>
+    <td><input type="number" min="0" max={{product.amount}}></td>
   </tr>
   <tr>
+    <td colspan="4"></td>
+    <td>Summe</td>
+    <td>???</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>Lieferadresse:</td>
     <td><input type="text"></td>
-    <td><input type="number" min="0"></td>
-    <td><input type="text"></td>
-    <td><input type="number" max="0"></td>
   </tr>
   <tr>
-    <!-- TODO: this should become a button -->
-    <td colspan="4">Produkt hinzufügen</td>
+    <td>Lieferkosten:</td>
+    <td>3.50</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button>Bestellen</button>
+    </td>
   </tr>
 </table>

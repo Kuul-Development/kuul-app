@@ -18,6 +18,12 @@ public class ClientResource {
 
     private static Logger logger = org.slf4j.LoggerFactory.getLogger(ClientResource.class);
 
+    private static String salesman1 = "Max Musterverkäufer";
+    private static String salesman2 = "Hans Wurstverkäufer";
+    private static Product pencil = new Product("Stift", "Gut zu schreiben", 5, salesman1, 0.99);
+    private static Product flower = new Product("Blume", "Riecht gut", 10, salesman1, 1.45);
+    private static Product soap = new Product("Seife", "Dreck blitzschnell weg", 3, salesman1, 3.99);
+    private static Product sausage = new Product("Mettwurst", "Lecker schmecker", 6, salesman2, 4.00);
     /**
      * Returns the current {@link RadioState} as a {@link Response} object and logs the access.
      *
@@ -27,7 +33,7 @@ public class ClientResource {
     @Path("getcatalogue")
     @Produces(MediaType.APPLICATION_JSON)
     public Response retrieveListOfProducts() {
-        SalesmanResource salesman = new SalesmanResource();
+        List<Product> listOfProducts = Arrays.asList(pencil, flower, soap, sausage);
         Map<String, List<Product>> catalogue = salesman.getCatalogue();
         return Response
                     .ok(catalogue, MediaType.APPLICATION_JSON)

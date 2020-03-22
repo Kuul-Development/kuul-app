@@ -23,4 +23,6 @@ export class Product {
   productId: string;
   amount: number;
   description: string;
+  salesman: string;
+  price: number;
 }
