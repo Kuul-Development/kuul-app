@@ -1,6 +1,17 @@
-<div style="text-align:center">
-  <h1>Salesman</h1>
-  <app-product></app-product>
-  <h1>Client</h1>
-  <app-customer></app-customer>
-</div>
+<h1 class="mb-4 mr-auto mr-md-none">Kuul </h1>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Client</a>
+    <ng-template ngbNavContent>
+      <app-product></app-product>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Salesman</a>
+    <ng-template ngbNavContent>
+      <app-customer></app-customer>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
