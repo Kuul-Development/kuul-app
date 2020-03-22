@@ -29,7 +29,6 @@ export class SalesmanComponent implements OnInit {
       amount: '',
       price: ''
     });
-    this.productsOfSalesman = this.salesmanService.getAllProducts(this.salesmanAddProductForm.value.id);
   }
 
   public onAddSalesman() {

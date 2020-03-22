@@ -9,11 +9,11 @@ import {environment} from "../../../environments/environment";
 })
 export class ClientService {
 
-  private restUrl = environment.serverBaseUrl + '/client/products';
+  private restUrl = environment.serverBaseUrl + '/sell/getstore';
 
   constructor(private http: HttpClient) { }
 
-  public getAllProducts(): Observable<Product[]> {
-    return this.http.get<[Product]>(this.restUrl);
+  public getAllProducts() {
+    return this.http.get<[Product]>(this.restUrl, {params: {id:'1'}});
   }
 }
