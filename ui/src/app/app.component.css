@@ -14,7 +14,7 @@ body {
   max-width: 300px;
 }
 
-#header {
+header {
   width: 900px;
   margin: auto;
   border: 0px solid #000;
@@ -38,7 +38,7 @@ body {
   clear: both;
 }
 
-#navbar {
+nav {
   width: 900 px;
   margin: 0px auto 0px auto;
   border-top: 1px solid #000;
@@ -68,7 +68,7 @@ body {
   border: 0px solid #000;
 }
 
-#footer {
+footer {
   width: 900 px;
   margin: 0px auto 0px auto;
   border-top: 1px solid #000;

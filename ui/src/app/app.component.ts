@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faTshirt } from '@fortawesome/free-solid-svg-icons';
-import { faPencilRuler } from '@fortawesome/free-solid-svg-icons';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
-import { faChess } from '@fortawesome/free-solid-svg-icons';
-import { faCarrot } from '@fortawesome/free-solid-svg-icons';
-import { faPlug } from '@fortawesome/free-solid-svg-icons';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
+import {
+  faCoffee,
+  faShoppingBag,
+  faUser,
+  faBars,
+  faSearch,
+  faTshirt,
+  faPencilRuler,
+  faBook,
+  faChess,
+  faCarrot,
+  faPlug,
+  faMapMarkerAlt
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,5 @@
 <body>
-<div id="header">
+<header>
   <div id="logo">
     <p><img src="assets/images/Logo.png" alt="Kuules Logo"></p>
   </div>
@@ -11,7 +11,7 @@
 				<fa-icon [icon]="faUser"></fa-icon>
 			</span>
   </div>
-</div>
+</header>
 <div id="menue_search">
 		<span style="font-size: 2em; color: black;">
 			<fa-icon [icon]="faBars"></fa-icon>
@@ -21,7 +21,7 @@
 			<fa-icon [icon]="faSearch"></fa-icon>
 		</span>
 </div>
-<div id="navbar">
+<nav>
   <p align="center" class="icon-bar">
 			<span style="font-size: 3em; color: black;">
 				<fa-icon [icon]="faTshirt"></fa-icon>
@@ -42,7 +42,7 @@
 				<fa-icon [icon]="faPlug"></fa-icon>
 			</span>
   </p>
-</div>
+</nav>
 <div id="content">
   <div id="contentleft">
     <ul ngbNav #nav="ngbNav" class="nav-tabs">
@@ -62,7 +62,7 @@
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </div>
 </div>
-<div id="footer">
+<footer>
   <p align="center">Kuul e.V. - Teststr. 13 - 12345 Germany</p>
-</div>
+</footer>
 </body>
