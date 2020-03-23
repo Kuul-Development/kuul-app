@@ -1,20 +1,20 @@
 
-#products {
+{
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 40%;
 }
 
-#products td, #products th {
+table td, table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#products tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even){background-color: #f2f2f2;}
 
-#products tr:hover {background-color: #ddd;}
+table tr:hover {background-color: #ddd;}
 
-#products th {
+table th {
   padding-top: 12px;
   padding-bottom: 12px;
   background-color: #4CAF50;

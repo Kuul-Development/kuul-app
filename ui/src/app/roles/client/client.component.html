@@ -1,15 +1,14 @@
-<table>
+<table *ngFor="let item of catalogue | async">
   <tr>
     <th>Produkt</th>
-    <th>Stückzahl</th>
     <th>Produktbeschreibung</th>
+    <th>Stückzahl</th>
     <th>Preis</th>
-
   </tr>
-  <tr *ngFor="let item of catalogue | async">
-    <td>{{item.product}}</td>
-    <td>{{item.amount}}</td>
-    <td>{{item.desc}}</td>
-    <td>{{item.price}}</td>
+  <tr *ngFor="let product of item.products">
+    <td>{{product.product}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.amount}}</td>
+    <td>{{product.price}}</td>
   </tr>
 </table>

@@ -1,5 +1,6 @@
 package com.kuul.bc.product.resource;
 
+import com.kuul.bc.product.dto.Catalogue;
 import com.kuul.bc.product.dto.Client;
 import com.kuul.bc.product.dto.Order;
 import com.kuul.bc.product.dto.Product;
@@ -36,11 +37,10 @@ public class ClientViewResource {
      * Get the whole catalogue of all available products
      */
     @GET
-    @Path("getcatalogue")
+    @Path("catalogue")
     @Produces(MediaType.APPLICATION_JSON)
     public Response retrieveCatalogue() {
-        SalesmanViewResource salesview = new SalesmanViewResource();
-        Map<Salesman, List<Product>> catalogue = salesview.getCatalogue();
+        List<Catalogue> catalogue = createCatalogueForClientView();
         return Response
                 .ok(catalogue, MediaType.APPLICATION_JSON)
                 .build();
@@ -50,7 +50,7 @@ public class ClientViewResource {
      * Create a new client
      */
     @PUT
-    @Path("create")
+    @Path("client")
     @Produces(MediaType.APPLICATION_JSON)
     public Response createClient() {
         int size = clientAccounts.size();
@@ -66,7 +66,7 @@ public class ClientViewResource {
      * Place an order of products
      */
     @PUT
-    @Path("placeOrder")
+    @Path("order")
     @Produces(MediaType.APPLICATION_JSON)
     public static Response placeOrder(@QueryParam("client") long id, @QueryParam("salesman") String salesman, @QueryParam("product") String product) {
         final SalesmanViewResource sellingView = new SalesmanViewResource();
@@ -89,6 +89,24 @@ public class ClientViewResource {
         return Response
                 .ok(orderForClient, MediaType.APPLICATION_JSON)
                 .build();
+    }
+
+    /**
+     * Delete all items from shoppingCard
+     */
+    @PUT
+    @Path("delete")
+    public static void deleteAll() {
+        shoppingCard.clear();
+    }
+
+    private List<Catalogue> createCatalogueForClientView() {
+        SalesmanViewResource salesview = new SalesmanViewResource();
+        Map<Salesman, List<Product>> catalogueSV = salesview.getCatalogue();
+        return catalogueSV.entrySet()
+                          .stream()
+                          .map(e -> new Catalogue(e.getKey().getName(), e.getValue()))
+                          .collect(Collectors.toList());
     }
 
     private static void addNewOrderToClient(Client client, Salesman dealer, Product orderedProduct) {
