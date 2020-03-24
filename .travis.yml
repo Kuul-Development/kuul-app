@@ -7,6 +7,8 @@ matrix:
         - oraclejdk8
       before_script:
         - cd server
+      after_script:
+        - cd ..
 addons:
   sonarcloud:
     organization: "kuul-development"
