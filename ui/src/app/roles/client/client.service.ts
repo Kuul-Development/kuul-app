@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Product} from "./client.component";
+import {Catalogue} from "./client.component";
 import {environment} from "../../../environments/environment";
 
 @Injectable({
@@ -9,11 +8,12 @@ import {environment} from "../../../environments/environment";
 })
 export class ClientService {
 
-  private restUrl = environment.serverBaseUrl + '/sell/getstore';
+  private restUrl = environment.serverBaseUrl + '/buy/catalogue';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  public getAllProducts() {
-    return this.http.get<[Product]>(this.restUrl, {params: {id:'1'}});
+  public getProductsPerSalesman() {
+    return this.http.get<[Catalogue]>(this.restUrl);
   }
 }

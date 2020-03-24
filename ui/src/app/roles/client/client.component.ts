@@ -9,12 +9,12 @@ import {ClientService} from "./client.service";
 })
 export class ClientComponent implements OnInit {
 
-  catalogue: Observable<Product[]>;
+  catalogue: Observable<Catalogue[]>;
 
   constructor(private productService: ClientService) { }
 
   ngOnInit() {
-    this.catalogue = this.productService.getAllProducts();
+    this.catalogue = this.productService.getProductsPerSalesman();
   }
 
   ngOnClick() {
@@ -22,9 +22,13 @@ export class ClientComponent implements OnInit {
   }
 }
 
+export class Catalogue {
+  salesman: string;
+  products: Product[]
+}
 export class Product {
   product: string;
   amount: number;
-  desc: string;
+  description: string;
   price: number;
 }

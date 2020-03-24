@@ -27,14 +27,14 @@ public class SalesmanViewResource {
      * Add a salesman to the catalogue
      */
     @PUT
-    @Path("add")
+    @Path("salesman")
     public static Response addSalesman(@QueryParam("salesman") String salesman) {
         int size = catalogue.keySet().size();
         Salesman newSalesman = new Salesman(size+1,salesman);
         catalogue.put(newSalesman, new ArrayList<>());
 
         return Response
-                .ok(newSalesman, MediaType.APPLICATION_JSON)
+                .ok()
                 .build();
     }
 
@@ -42,7 +42,7 @@ public class SalesmanViewResource {
      * Get all available salesmen
      */
     @GET
-    @Path("getallsalesmen")
+    @Path("allsalesmen")
     public static Response getAllSalesmen() {
         return Response
                 .ok(catalogue.keySet(), MediaType.APPLICATION_JSON)
@@ -53,7 +53,7 @@ public class SalesmanViewResource {
      * Add a product to the catalogue of a certain salesman
      */
     @PUT
-    @Path("addproduct")
+    @Path("product")
     @Produces(MediaType.APPLICATION_JSON)
     public static Response addProduct(@QueryParam("id") long id,
                                             @QueryParam("product") String product,
@@ -74,7 +74,7 @@ public class SalesmanViewResource {
      * Get the view on a catalogue of a certain salesman
      */
     @GET
-    @Path("getstore")
+    @Path("store")
     @Produces(MediaType.APPLICATION_JSON)
     public static Response getStore(@QueryParam("id") long id) {
         Salesman salesman = catalogue.keySet()
@@ -85,6 +85,15 @@ public class SalesmanViewResource {
         return Response
                 .ok(catalogue.get(salesman), MediaType.APPLICATION_JSON)
                 .build();
+    }
+
+    /**
+     * Delete all items from catalogue
+     */
+    @PUT
+    @Path("delete")
+    public static void deleteAll() {
+        catalogue.clear();
     }
 
     public Map<Salesman, List<Product>> getCatalogue() {
