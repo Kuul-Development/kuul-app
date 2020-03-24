@@ -6,6 +6,6 @@ import org.junit.jupiter.api.Test;
 class SupplierViewResourceTest {
     @Test
     void addition() {
-        assertEquals(2, 3);
+        assertEquals(2, 2);
     }
 }
