@@ -2,7 +2,9 @@ package com.kuul.bc.product.resource;
 
 import com.kuul.bc.product.dto.Product;
 import com.kuul.bc.product.dto.Salesman;
+import com.kuul.bc.product.facades.SalesmanBF;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -23,14 +25,19 @@ import java.util.stream.Collectors;
 public class SalesmanViewResource {
     private static Map<Salesman, List<Product>> catalogue = new HashMap<>();
 
+    @Inject
+    private SalesmanBF salesmanBF;
+
     /**
      * Add a salesman to the catalogue
      */
     @PUT
     @Path("salesman")
-    public static Response addSalesman(@QueryParam("salesman") String salesman) {
+    public Response addSalesman(@QueryParam("salesman") String salesman) {
+        salesmanBF.addSalesman();
+
         int size = catalogue.keySet().size();
-        Salesman newSalesman = new Salesman(size+1,salesman);
+        Salesman newSalesman = new Salesman(size + 1, salesman);
         catalogue.put(newSalesman, new ArrayList<>());
 
         return Response
