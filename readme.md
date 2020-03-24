@@ -1,5 +1,7 @@
 # Kuul app
 
+[![Build Status](https://travis-ci.com/Kuul-Development/kuul-app.svg?branch=master)](https://travis-ci.com/Kuul-Development/kuul-app)
+
 An app to connect small businesses, delivery services and customers.
 
 ## Getting Started

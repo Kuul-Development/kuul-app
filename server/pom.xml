@@ -14,6 +14,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <version.jersey>2.22.2</version.jersey>
         <version.slf4j>1.7.30</version.slf4j>
+        <sonar.projectKey>Kuul-Development_kuul-app</sonar.projectKey>
+        <sonar.organization>kuul-development</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>53cf03ae6e1180807f7aef8995d7a27afc72b292</sonar.login>
     </properties>
 
     <dependencies>
@@ -57,6 +61,13 @@
             <version>5.6.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.15.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -69,6 +80,15 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.6.0.1398</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>
