@@ -11,4 +11,7 @@ matrix:
         sonarcloud:
           organization: "kuul-development"
       script:
-          - sonar-scanner
+        - sonar-scanner
+      cache:
+        directories:
+          - '$HOME/.sonar/cache'
