@@ -10,7 +10,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 /**
  * Resource class for the supplier view
@@ -40,11 +40,14 @@ public class SupplierViewResource {
     @Produces(MediaType.APPLICATION_JSON)
     public static Response updateRadioState(@QueryParam("orderId") long orderId) {
         ClientViewResource client = new ClientViewResource();
-        Order order = client.getOrders().stream().filter(o -> o.getOrderId() == orderId).collect(Collectors.toList()).get(0);
-        order.setDone(true);
+        Optional<Order> order = findOrderById(client.getOrders(), orderId);
+        order.ifPresent(o -> o.setDone(true));
         return Response
                 .ok(client.getOrders(), MediaType.APPLICATION_JSON)
                 .build();
     }
 
+    static Optional<Order> findOrderById(List<Order> orders, long orderId)  {
+        return orders.stream().filter(o -> o.getOrderId() == orderId).findFirst();
+    }
 }
