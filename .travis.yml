@@ -1,6 +1,8 @@
 dist: trusty
 
 language: java
+install:
+  - npm install typescript
 jdk:
   - oraclejdk8
 before_script:
