@@ -9,6 +9,7 @@ addons:
   sonarcloud:
     organization: "kuul-development"
 script:
+  - mvn clean install
   - sonar-scanner
 cache:
   directories:
