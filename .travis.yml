@@ -1,12 +1,10 @@
 dist: trusty
 
-matrix:
-  include:
-    - language: java
-      jdk:
-        - oraclejdk8
-      before_script:
-        - cd server
+language: java
+jdk:
+  - oraclejdk8
+before_script:
+  - cd server
 addons:
   sonarcloud:
     organization: "kuul-development"
