@@ -10,6 +10,7 @@ addons:
     organization: "kuul-development"
 script:
   - mvn clean install
+  - cd ..
   - sonar-scanner
 cache:
   directories:
