@@ -1,4 +1,4 @@
-package com.kuul.bc.product.resource;
+package com.kuul.bc.product.business;
 
 import com.kuul.bc.product.dto.Catalogue;
 import com.kuul.bc.product.dto.Client;
@@ -6,11 +6,10 @@ import com.kuul.bc.product.dto.Order;
 import com.kuul.bc.product.dto.Product;
 import com.kuul.bc.product.dto.Salesman;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -20,10 +19,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Resource class for the client view
+ * business layer for the client view
  */
-@Path("buy")
-public class ClientViewResource {
+public class ClientViewBL {
+
     /**
      * Overview of all orders of clients
      */
@@ -33,46 +32,40 @@ public class ClientViewResource {
      */
     private static List<Client> clientAccounts = new ArrayList<>();
 
+    @Inject
+    private SalesmanViewBL salesmanViewBL;
+
     /**
-     * Get the whole catalogue of all available products
+     * Get the whole catalogue of available stores and products
      */
-    @GET
-    @Path("catalogue")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response retrieveCatalogue() {
-        List<Catalogue> catalogue = createCatalogueForClientView();
-        return Response
-                .ok(catalogue, MediaType.APPLICATION_JSON)
-                .build();
+    public List<Catalogue> getCatalogue() {
+        return createCatalogueForClientView();
+    }
+
+    private List<Catalogue> createCatalogueForClientView() {
+        Map<Salesman, List<Product>> catalogue = salesmanViewBL.getCatalogue();
+        return catalogue.entrySet()
+                          .stream()
+                          .map(e -> new Catalogue(e.getKey().getName(), e.getValue()))
+                          .collect(Collectors.toList());
     }
 
     /**
      * Create a new client
      */
-    @PUT
-    @Path("client")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response createClient() {
+    public void createClient() {
         int size = clientAccounts.size();
         Client newClient = new Client(size+1);
         clientAccounts.add(newClient);
-
-        return Response
-                .ok(newClient, MediaType.APPLICATION_JSON)
-                .build();
     }
 
     /**
      * Place an order of products
      */
-    @PUT
-    @Path("order")
-    @Produces(MediaType.APPLICATION_JSON)
-    public static Response placeOrder(@QueryParam("client") long id, @QueryParam("salesman") String salesman, @QueryParam("product") String product) {
-        final SalesmanViewResource sellingView = new SalesmanViewResource();
+    public void placeOrder(long id, String salesman, String product) {
         final Client client = retrieveClientForId(id);
-        final Salesman dealer = retrieveDealer(sellingView, salesman);
-        final Product orderedProduct = retrieveOrderedProduct(sellingView, dealer, product);
+        final Salesman dealer = retrieveDealer(salesman);
+        final Product orderedProduct = retrieveOrderedProduct(dealer, product);
 
         if(isClientKnown(client)) {
             if (clientHasAlreadyOrderAtDealer(dealer)) {
@@ -82,31 +75,28 @@ public class ClientViewResource {
             }
         }
         else {
-           addNewOrderToClient(client, dealer, orderedProduct);
+            addNewOrderToClient(client, dealer, orderedProduct);
         }
-
-        Order orderForClient = shoppingCard.stream().filter(o -> o.getClient().equals(client)).collect(Collectors.toList()).get(0);
-        return Response
-                .ok(orderForClient, MediaType.APPLICATION_JSON)
-                .build();
     }
 
     /**
      * Delete all items from shoppingCard
      */
-    @PUT
-    @Path("delete")
-    public static void deleteAll() {
+    public void deleteAll() {
         shoppingCard.clear();
     }
 
-    private List<Catalogue> createCatalogueForClientView() {
-        SalesmanViewResource salesview = new SalesmanViewResource();
-        Map<Salesman, List<Product>> catalogueSV = salesview.getCatalogue();
-        return catalogueSV.entrySet()
-                          .stream()
-                          .map(e -> new Catalogue(e.getKey().getName(), e.getValue()))
-                          .collect(Collectors.toList());
+    /**
+     * Get the whole catalogue of all available products
+     */
+    @GET
+    @Path("getorders")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response retrieveListOfProducts() {
+        List<Order> allOrders = getOrders();
+        return Response
+                .ok(allOrders, MediaType.APPLICATION_JSON)
+                .build();
     }
 
     private static void addNewOrderToClient(Client client, Salesman dealer, Product orderedProduct) {
@@ -133,16 +123,16 @@ public class ClientViewResource {
         return shoppingCard.stream().anyMatch(order -> order.getClient().equals(client));
     }
 
-    private static Product retrieveOrderedProduct(SalesmanViewResource sellingView, Salesman dealer, String product) {
-        return sellingView.getCatalogue()
-                          .get(dealer)
-                          .stream()
-                          .filter(listItem -> listItem.getProduct().equals(product)).collect(Collectors.toList())
-                          .get(0);
+    private Product retrieveOrderedProduct(Salesman dealer, String product) {
+        return  salesmanViewBL.getCatalogue()
+                              .get(dealer)
+                              .stream()
+                              .filter(listItem -> listItem.getProduct().equals(product)).collect(Collectors.toList())
+                              .get(0);
     }
 
-    private static Salesman retrieveDealer(SalesmanViewResource seller, String salesman) {
-        return seller.getCatalogue().keySet().stream().filter(s -> s.getName().equals(salesman)).collect(Collectors.toList()).get(0);
+    private Salesman retrieveDealer(String salesman) {
+        return salesmanViewBL.getCatalogue().keySet().stream().filter(s -> s.getName().equals(salesman)).collect(Collectors.toList()).get(0);
     }
 
     private static Client retrieveClientForId(long id) {
