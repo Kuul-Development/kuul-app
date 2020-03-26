@@ -40,6 +40,12 @@ public class SalesmanViewResource {
         Salesman newSalesman = new Salesman(size + 1, salesman);
         catalogue.put(newSalesman, new ArrayList<>());
 
+        int target = -5;
+        int num = 3;
+
+        target =- num;  // Noncompliant; target = -3. Is that really what's meant?
+        target =+ num; // Noncompliant; target = 3
+
         return Response
                 .ok()
                 .build();

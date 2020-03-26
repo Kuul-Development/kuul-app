@@ -17,7 +17,7 @@ export class SalesmanService {
        params: {salesman: salesman}}).subscribe();
   }
 
-  public getAllSalesmen(): Observable<Salesman[]> {
+  public getAllSalesmen(): Observable<Salesman[]> & null {
     let restUrl = environment.serverBaseUrl + '/sell/allsalesmen';
     return this.http.get<[Salesman]>(restUrl);
   }
