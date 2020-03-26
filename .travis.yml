@@ -11,7 +11,7 @@ addons:
   sonarcloud:
     organization: "kuul-development"
 script:
-  - mvn clean install
+  - mvn clean install -Pcoverage
   - cd ..
   - sonar-scanner
 cache:
