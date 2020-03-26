@@ -1,5 +1,8 @@
 dist: trusty
 
+git:
+  depth: 3
+
 language: java
 install:
   - npm install typescript
