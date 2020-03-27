@@ -15,7 +15,7 @@ script:
   - cd server
   - mvn clean install -Pcoverage
   - cd ../ui/
-  - npm build --prod
+  - ng build --prod
   - cd ..
   - sonar-scanner
 cache:
@@ -28,3 +28,5 @@ deploy:
   bucket: "testbucket-pekr"
   skip_cleanup: true
   local_dir: build
+  on:
+    branch: cloud-deployment
