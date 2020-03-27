@@ -16,7 +16,7 @@ script:
   - mvn clean install -Pcoverage
   - cd ../ui/
   - npm install
-  - ng build --prod
+  - npm run-script build
   - cd ..
   - sonar-scanner
 cache:
