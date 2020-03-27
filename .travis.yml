@@ -6,9 +6,10 @@ git:
 language: java
 install:
   - npm install typescript
-  - npm install -g angular-cli
+  - npm install -g angular/cli
   - cd ui
   - npm install
+  - cd ..
 jdk:
   - oraclejdk8
 addons:
