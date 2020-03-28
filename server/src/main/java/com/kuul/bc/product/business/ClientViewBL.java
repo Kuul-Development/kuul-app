@@ -7,11 +7,6 @@ import com.kuul.bc.product.dto.Product;
 import com.kuul.bc.product.dto.Salesman;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,14 +35,6 @@ public class ClientViewBL {
      */
     public List<Catalogue> getCatalogue() {
         return createCatalogueForClientView();
-    }
-
-    private List<Catalogue> createCatalogueForClientView() {
-        Map<Salesman, List<Product>> catalogue = salesmanViewBL.getCatalogue();
-        return catalogue.entrySet()
-                          .stream()
-                          .map(e -> new Catalogue(e.getKey().getName(), e.getValue()))
-                          .collect(Collectors.toList());
     }
 
     /**
@@ -89,14 +76,23 @@ public class ClientViewBL {
     /**
      * Get the whole catalogue of all available products
      */
-    @GET
-    @Path("getorders")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response retrieveListOfProducts() {
-        List<Order> allOrders = getOrders();
-        return Response
-                .ok(allOrders, MediaType.APPLICATION_JSON)
-                .build();
+    public List<Order> getAllOrders() {
+        return shoppingCard;
+    }
+
+    /**
+     * Get all client accounts
+     */
+    public List<Client> getAllClientAccounts() {
+        return clientAccounts;
+    }
+
+    private List<Catalogue> createCatalogueForClientView() {
+        Map<Salesman, List<Product>> catalogue = salesmanViewBL.getCatalogue();
+        return catalogue.entrySet()
+                        .stream()
+                        .map(e -> new Catalogue(e.getKey().getName(), e.getValue()))
+                        .collect(Collectors.toList());
     }
 
     private static void addNewOrderToClient(Client client, Salesman dealer, Product orderedProduct) {
@@ -137,9 +133,5 @@ public class ClientViewBL {
 
     private static Client retrieveClientForId(long id) {
         return clientAccounts.stream().filter(clients -> clients.getId() == id).collect(Collectors.toList()).get(0);
-    }
-
-    public List<Order> getOrders() {
-        return shoppingCard;
     }
 }

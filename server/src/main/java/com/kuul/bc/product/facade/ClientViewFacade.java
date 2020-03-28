@@ -2,6 +2,7 @@ package com.kuul.bc.product.facade;
 
 import com.kuul.bc.product.dto.Catalogue;
 import com.kuul.bc.product.business.ClientViewBL;
+import com.kuul.bc.product.dto.Order;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -53,6 +54,19 @@ public class ClientViewFacade {
     @Produces(MediaType.APPLICATION_JSON)
     public void placeOrder(@QueryParam("client") long id, @QueryParam("salesman") String salesman, @QueryParam("product") String product) {
         clientViewBL.placeOrder(id, salesman, product);
+    }
+
+    /**
+     * Get the whole catalogue of all available products
+     */
+    @GET
+    @Path("allorders")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllOrders() {
+        List<Order> allOrders = clientViewBL.getAllOrders();
+        return Response
+                .ok(allOrders, MediaType.APPLICATION_JSON)
+                .build();
     }
 
     /**
