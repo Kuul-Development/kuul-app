@@ -4,9 +4,14 @@ matrix:
     - language: java
       dist: trusty
       jdk: oraclejdk8
+      # disable shallow clone so that sonar-scanner has full blame information
+      git:
+        depth: false
       addons:
         sonarcloud:
           organization: "kuul-development"
+      install:
+        - npm install typescript
       before_script:
         - cd server
       script:
@@ -33,37 +38,3 @@ matrix:
         on:
           branch: cloud-deployment
 
-
-#dist: trusty
-#
-#git:
-#  depth: 3
-#
-#language: java
-#install:
-#  - npm install typescript
-#jdk:
-#  - oraclejdk8
-#addons:
-#  sonarcloud:
-#    organization: "kuul-development"
-#script:
-#  - cd server
-#  - mvn clean install -Pcoverage
-#  - cd ../ui/
-#  - npm install
-#  - npm run-script build
-#  - cd ..
-#  - sonar-scanner
-#cache:
-#  directories:
-#    - '$HOME/.sonar/cache'
-#deploy:
-#  provider: s3
-#  access_key_id: "YOUR AWS ACCESS KEY"
-#  secret_access_key: "YOUR AWS SECRET KEY"
-#  bucket: "testbucket-pekr"
-#  skip_cleanup: true
-#  local_dir: build
-#  on:
-#    branch: cloud-deployment
