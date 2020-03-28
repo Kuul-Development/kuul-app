@@ -1,5 +1,22 @@
-matrix:
-  include:
-    - language: java
-      before_script:
-        - cd server
+dist: trusty
+
+git:
+  depth: 3
+
+language: java
+install:
+  - npm install typescript
+jdk:
+  - oraclejdk8
+before_script:
+  - cd server
+addons:
+  sonarcloud:
+    organization: "kuul-development"
+script:
+  -  mvn clean install -Pcoverage
+  - cd ..
+  - sonar-scanner
+cache:
+  directories:
+    - '$HOME/.sonar/cache'

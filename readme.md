@@ -1,6 +1,7 @@
 # Kuul app
 
 [![Build Status](https://travis-ci.com/Kuul-Development/kuul-app.svg?branch=master)](https://travis-ci.com/Kuul-Development/kuul-app)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kuul-Development_kuul-app&metric=alert_status)](https://sonarcloud.io/dashboard?id=Kuul-Development_kuul-app)
 
 An app to connect small businesses, delivery services and customers.
 
