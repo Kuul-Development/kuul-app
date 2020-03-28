@@ -8,6 +8,8 @@ matrix:
         - cd server
       script:
         - mvn clean install -Pcoverage
+        - cd ..
+        - sonar-scanner
 
     - language: node_js
       dist: xenial
