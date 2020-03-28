@@ -10,12 +10,16 @@ matrix:
       addons:
         sonarcloud:
           organization: "kuul-development"
+      services:
+        - docker
       install:
         - npm install typescript
       before_script:
         - cd server
       script:
         - mvn clean install -Pcoverage
+        - docker build
+        # the sonar analysis is triggered for the whole project (including frontend)
         - cd ..
         - sonar-scanner
 
