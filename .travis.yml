@@ -18,7 +18,7 @@ matrix:
         - cd server
       script:
         - mvn clean install -Pcoverage
-        - docker build
+        - docker build .
         # the sonar analysis is triggered for the whole project (including frontend)
         - cd ..
         - sonar-scanner
