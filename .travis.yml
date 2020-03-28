@@ -26,6 +26,8 @@ matrix:
         provider: elasticbeanstalk
         access_key_id: ${AWS_ACCESS_KEY_ID}
         secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+        env: "kuul-server-env"
+        app: "kuul-server-app"
         bucket: "kuul-server"
         edge: true # opt in to dpl v2
         on:
