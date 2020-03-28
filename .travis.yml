@@ -22,6 +22,12 @@ matrix:
         # the sonar analysis is triggered for the whole project (including frontend)
         - cd ..
         - sonar-scanner
+      deploy:
+        provider: elasticbeanstalk
+        access_key_id: ${AWS_ACCESS_KEY_ID}
+        secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+        bucket: "kuul-server"
+        edge: true # opt in to dpl v2
 
     - language: node_js
       dist: xenial
@@ -36,7 +42,7 @@ matrix:
         provider: s3
         access_key_id: ${AWS_ACCESS_KEY_ID}
         secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-        bucket: "testbucket-pekr"
+        bucket: "kuul-ui"
         skip_cleanup: true
         local_dir: dist/ui
         on:
