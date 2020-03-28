@@ -14,7 +14,6 @@ matrix:
       node_js: '11.0.0'
       before_script:
         - cd ui
-        - npm install -g angular/cli
         - npm install
       script:
         - ng build --prod
