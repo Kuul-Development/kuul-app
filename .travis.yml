@@ -18,6 +18,15 @@ matrix:
         - npm install
       script:
         - ng build --prod
+      deploy:
+        provider: s3
+        access_key_id: "YOUR AWS ACCESS KEY"
+        secret_access_key: "YOUR AWS SECRET KEY"
+        bucket: "testbucket-pekr"
+        skip_cleanup: true
+        local_dir: dist/ui
+        on:
+          branch: cloud-deployment
 
 
 #dist: trusty
