@@ -26,6 +26,7 @@ matrix:
         secret_access_key: ${AWS_SECRET_ACCESS_KEY}
         env: "KuulServerApp-env"
         app: "kuul-server-app"
+        skip_cleanup: true
         bucket: "kuul-server"
         edge: true # opt in to dpl v2
         on:
