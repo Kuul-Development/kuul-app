@@ -1,8 +1,8 @@
-dist: trusty
 
 matrix:
   include:
     - language: java
+      dist: trusty
       jdk: oraclejdk8
       before_script:
         - cd server
@@ -10,7 +10,8 @@ matrix:
         - mvn clean install -Pcoverage
 
     - language: node_js
-      node_js: '13.11.00'
+      dist: xenial
+      node_js: '11.0.0'
       before_script:
         - cd ui
         - npm install -g angular/cli
