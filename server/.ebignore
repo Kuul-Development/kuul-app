@@ -1,1 +1,6 @@
 # This file is required so that .gitignore won't be used for deployments
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

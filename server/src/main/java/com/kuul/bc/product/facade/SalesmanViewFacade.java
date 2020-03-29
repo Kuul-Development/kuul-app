@@ -48,7 +48,7 @@ public class SalesmanViewFacade {
     @Path("testendpoint")
     public Response getTestEndpoint() {
         Salesman salesman = new Salesman();
-        salesman.setName("testName2");
+        salesman.setName("testName4");
         return Response.ok(salesman, MediaType.APPLICATION_JSON)
                 .build();
     }
