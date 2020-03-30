@@ -18,15 +18,15 @@ matrix:
         # the sonar analysis is triggered for the whole project (including frontend)
         - cd ..
         - sonar-scanner
-        - cd server
       deploy:
         provider: elasticbeanstalk
         access_key_id: ${AWS_ACCESS_KEY_ID}
         secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-        env: "KuulServerApp-env-1"
-        app: "kuul-server-app"
+        env: "KuulApp-env"
+        app: "kuul-app"
         bucket: "kuul-server"
         edge: true # opt in to dpl v2
+        zip_file: server/target/kuul-server-1.0-SNAPSHOT.war
         on:
           branch: cloud-deployment
 
