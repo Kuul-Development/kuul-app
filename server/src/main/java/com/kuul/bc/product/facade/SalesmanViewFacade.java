@@ -44,15 +44,6 @@ public class SalesmanViewFacade {
                        .build();
     }
 
-    @GET
-    @Path("testendpoint")
-    public Response getTestEndpoint() {
-        Salesman salesman = new Salesman();
-        salesman.setName("testName7");
-        return Response.ok(salesman, MediaType.APPLICATION_JSON)
-                .build();
-    }
-
     /**
      * Add a product to the catalogue of a certain salesman
      */
