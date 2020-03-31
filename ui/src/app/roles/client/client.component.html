@@ -1,9 +1,9 @@
 <table *ngFor="let item of catalogue | async">
   <tr>
-    <th>Produkt</th>
-    <th>Produktbeschreibung</th>
-    <th>Stückzahl</th>
-    <th>Preis</th>
+    <th scope="col">Produkt</th>
+    <th scope="col">Produktbeschreibung</th>
+    <th scope="col">Stückzahl</th>
+    <th scope="col">Preis</th>
   </tr>
   <tr *ngFor="let product of item.products">
     <td>{{product.product}}</td>

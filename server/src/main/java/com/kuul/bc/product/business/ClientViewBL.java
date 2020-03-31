@@ -41,8 +41,8 @@ public class ClientViewBL {
      * Create a new client
      */
     public void createClient() {
-        int size = clientAccounts.size();
-        Client newClient = new Client(size+1);
+        long size = clientAccounts.size();
+        Client newClient = new Client(size + 1);
         clientAccounts.add(newClient);
     }
 
@@ -96,8 +96,8 @@ public class ClientViewBL {
     }
 
     private static void addNewOrderToClient(Client client, Salesman dealer, Product orderedProduct) {
-        int size = shoppingCard.size();
-        Order newOrder = new Order(size+1, client, dealer, orderedProduct);
+        long size = shoppingCard.size();
+        Order newOrder = new Order(size + 1, client, dealer, orderedProduct);
         shoppingCard.add(newOrder);
     }
 

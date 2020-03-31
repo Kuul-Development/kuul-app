@@ -26,11 +26,11 @@
 <br>
 <form [formGroup]="salesmanAddProductForm" (ngSubmit)="onAddProductToSalesman()">
   <tr>
-    <th>ID des Händlers</th>
-    <th>Produkt</th>
-    <th>Produktbeschreibung</th>
-    <th>Menge</th>
-    <th>Preis</th>
+    <th scope="col">ID des Händlers</th>
+    <th scope="col">Produkt</th>
+    <th scope="col">Produktbeschreibung</th>
+    <th scope="col">Menge</th>
+    <th scope="col">Preis</th>
   </tr>
   <tr>
     <td><input type="number" min="1" formControlName="id"></td>
@@ -45,10 +45,10 @@
 <br>
 <table>
   <tr>
-    <th>Produkt</th>
-    <th>Stückzahl</th>
-    <th>Produktbeschreibung</th>
-    <th>Preis</th>
+    <th scope="col">Produkt</th>
+    <th scope="col">Stückzahl</th>
+    <th scope="col">Produktbeschreibung</th>
+    <th scope="col">Preis</th>
   </tr>
   <tr *ngFor="let product of productsOfSalesman | async">
     <td>{{product.product}}</td>
