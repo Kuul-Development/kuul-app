@@ -31,14 +31,14 @@ export class SalesmanComponent implements OnInit {
     });
   }
 
-  public onAddSalesman() {
-    this.salesmanService.addNewSalesman(this.salesmanAddForm.value.salesman);
+  public async onAddSalesman() {
+    await this.salesmanService.addNewSalesman(this.salesmanAddForm.value.salesman);
     this.salesmanList = this.salesmanService.getAllSalesmen();
   }
 
-  public onAddProductToSalesman() {
+  public async onAddProductToSalesman() {
     const input = this.salesmanAddProductForm.value;
-    this.salesmanService.addNewProduct(input.id, input.product, input.desc, input.amount, input.price);
+    await this.salesmanService.addNewProduct(input.id, input.product, input.desc, input.amount, input.price);
     this.productsOfSalesman = this.salesmanService.getAllProducts(input.id);
   }
 }

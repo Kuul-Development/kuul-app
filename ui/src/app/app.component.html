@@ -1,30 +1,33 @@
 <body>
 
 <header>
-  <div id="logo">
-    <a routerLink="/roles" routerLinkActive="active"><img src="../assets/images/Logo.png" alt="Kuules Logo"></a>
-  </div>
-  <div id="hsubscribe" class="icon-bar">
-			<span style="font-size: 3em; color: black;">
-        <fa-icon [icon]="faShoppingBag"></fa-icon>
-			</span>
-    <a routerLink="/account" routerLinkActive="active">
-    <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faUser"></fa-icon>
-			</span>
-    </a>
-  </div>
+  <a routerLink="/" routerLinkActive="active">
+    <img src="../assets/images/Logo.png" alt="Logo">
+  </a>
 </header>
 
-<div id="menue_search">
-		<span style="font-size: 2em; color: black;">
-			<fa-icon [icon]="faBars"></fa-icon>
-		</span>
-  <span style="font-size: 2em; color: black; float: right">
-			<input type="text" id="searchbox" name="searchbox" size="60">
-			<fa-icon [icon]="faSearch"></fa-icon>
-		</span>
-</div>
+<nav>
+  <a routerLink="/client" routerLinkActive="active">
+    <span style="font-size: 3em; color: black;">
+      <fa-icon [icon]="faCompressAlt"></fa-icon>
+    </span>
+  </a>
+  <a routerLink="/delivery" routerLinkActive="active">
+    <span style="font-size: 3em; color: black;">
+      <fa-icon [icon]="faBicycle"></fa-icon>
+    </span>
+  </a>
+  <a routerLink="/salesman" routerLinkActive="active">
+    <span style="font-size: 3em; color: black;">
+      <fa-icon [icon]="faStore"></fa-icon>
+    </span>
+  </a>
+  <a routerLink="/account" routerLinkActive="active">
+    <span style="font-size: 3em; color: black;">
+      <fa-icon [icon]="faUser"></fa-icon>
+    </span>
+  </a>
+</nav>
 
 <router-outlet></router-outlet>
 

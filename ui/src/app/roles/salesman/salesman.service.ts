@@ -13,8 +13,8 @@ export class SalesmanService {
 
   public addNewSalesman(salesman) {
     const restUrl = environment.serverBaseUrl + '/sell/salesman';
-    this.http.put(restUrl, true, {
-       params: {salesman: salesman}}).subscribe();
+    return this.http.put(restUrl, true, {
+       params: {salesman: salesman}}).toPromise();
   }
 
   public getAllSalesmen(): Observable<Salesman[]> {
@@ -26,10 +26,10 @@ export class SalesmanService {
     const restUrl = environment.serverBaseUrl + '/sell/product';
     return this.http.put(restUrl,true, {
       params: {id:id, product:product, desc:desc, amount:amount, price:price}
-    }).subscribe();
+    }).toPromise();
   }
 
-  public getAllProducts(id) {
+  public getAllProducts(id): Observable<[Product]> {
     const restUrl = environment.serverBaseUrl + '/sell/store';
     return this.http.get<[Product]>(restUrl, {params: {id:id}});
   }
