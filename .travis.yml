@@ -1,22 +1,51 @@
-dist: trusty
+matrix:
+  include:
+    - language: java
+      dist: trusty
+      jdk: oraclejdk8
+      # disable shallow clone so that sonar-scanner has full blame information
+      git:
+        depth: false
+      addons:
+        sonarcloud:
+          organization: "kuul-development"
+      install:
+        - npm install typescript
+      before_script:
+        - cd server
+      script:
+        - mvn clean install -Pcoverage
+        # the sonar analysis is triggered for the whole project (including frontend)
+        - cd ..
+        - sonar-scanner
+      deploy:
+        provider: elasticbeanstalk
+        access_key_id: ${AWS_ACCESS_KEY_ID}
+        secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+        env: "KuulApp-env"
+        app: "kuul-app"
+        bucket: "kuul-server"
+        edge: true # opt in to dpl v2
+        zip_file: server/target/kuul-server-1.0-SNAPSHOT.war
+        on:
+          branch: master
 
-git:
-  depth: 3
+    - language: node_js
+      dist: xenial
+      before_script:
+        - cd ui
+        - nvm install 13
+        - nvm use node
+        - npm install
+      script:
+        - ng build --prod
+      deploy:
+        provider: s3
+        access_key_id: ${AWS_ACCESS_KEY_ID}
+        secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+        bucket: "testbucket-pekr"
+        skip_cleanup: true
+        local_dir: dist/ui
+        on:
+          branch: master
 
-language: java
-install:
-  - npm install typescript
-jdk:
-  - oraclejdk8
-before_script:
-  - cd server
-addons:
-  sonarcloud:
-    organization: "kuul-development"
-script:
-  -  mvn clean install -Pcoverage
-  - cd ..
-  - sonar-scanner
-cache:
-  directories:
-    - '$HOME/.sonar/cache'
