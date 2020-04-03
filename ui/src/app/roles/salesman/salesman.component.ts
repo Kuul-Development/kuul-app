@@ -37,7 +37,7 @@ export class SalesmanComponent implements OnInit {
   }
 
   public onAddProductToSalesman() {
-    let input = this.salesmanAddProductForm.value;
+    const input = this.salesmanAddProductForm.value;
     this.salesmanService.addNewProduct(input.id, input.product, input.desc, input.amount, input.price);
     this.productsOfSalesman = this.salesmanService.getAllProducts(input.id);
   }

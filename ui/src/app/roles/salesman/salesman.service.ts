@@ -12,25 +12,25 @@ export class SalesmanService {
   constructor(private http: HttpClient) { }
 
   public addNewSalesman(salesman) {
-    let restUrl = environment.serverBaseUrl + '/sell/salesman';
+    const restUrl = environment.serverBaseUrl + '/sell/salesman';
     this.http.put(restUrl, true, {
        params: {salesman: salesman}}).subscribe();
   }
 
   public getAllSalesmen(): Observable<Salesman[]> {
-    let restUrl = environment.serverBaseUrl + '/sell/allsalesmen';
+    const restUrl = environment.serverBaseUrl + '/sell/allsalesmen';
     return this.http.get<[Salesman]>(restUrl);
   }
 
   public addNewProduct(id, product, desc, amount, price) {
-    let restUrl = environment.serverBaseUrl + '/sell/product';
+    const restUrl = environment.serverBaseUrl + '/sell/product';
     return this.http.put(restUrl,true, {
       params: {id:id, product:product, desc:desc, amount:amount, price:price}
     }).subscribe();
   }
 
   public getAllProducts(id) {
-    let restUrl = environment.serverBaseUrl + '/sell/store';
+    const restUrl = environment.serverBaseUrl + '/sell/store';
     return this.http.get<[Product]>(restUrl, {params: {id:id}});
   }
 }

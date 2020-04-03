@@ -21,7 +21,7 @@ public class SalesmanViewBL {
      * Add a salesman to the catalogue
      */
     public void addSalesman(String salesman) {
-        int size = catalogue.keySet().size();
+        long size = catalogue.keySet().size();
         Salesman newSalesman = new Salesman(size + 1, salesman);
         catalogue.put(newSalesman, new ArrayList<>());
     }
