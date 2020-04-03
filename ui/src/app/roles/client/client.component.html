@@ -1,14 +1,18 @@
-<table *ngFor="let item of catalogue | async">
+<table *ngFor="let item of catalogue | async" class="table table-striped">
+  <thead>
   <tr>
     <th scope="col">Produkt</th>
     <th scope="col">Produktbeschreibung</th>
     <th scope="col">Stückzahl</th>
     <th scope="col">Preis</th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let product of item.products">
     <td>{{product.product}}</td>
     <td>{{product.description}}</td>
     <td>{{product.amount}}</td>
     <td>{{product.price}}</td>
   </tr>
+  </tbody>
 </table>

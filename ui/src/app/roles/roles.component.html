@@ -1,40 +1,17 @@
 <base href="/roles">
 
-<nav class="icon-bar">
-  <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faTshirt"></fa-icon>
-			</span>
-  <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faPencilRuler"></fa-icon>
-			</span>
-  <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faBook"></fa-icon>
-			</span>
-  <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faChess"></fa-icon>
-			</span>
-  <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faCarrot"></fa-icon>
-			</span>
-  <span style="font-size: 3em; color: black;">
-				<fa-icon [icon]="faPlug"></fa-icon>
-			</span>
-</nav>
-
-<div id="content">
-  <ul ngbNav #nav="ngbNav" class="nav-tabs">
-    <li [ngbNavItem]="1">
-      <a ngbNavLink>Händler</a>
-      <ng-template ngbNavContent>
-        <app-salesman></app-salesman>
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="2">
-      <a ngbNavLink>Kunde</a>
-      <ng-template ngbNavContent>
-        <app-client></app-client>
-      </ng-template>
-    </li>
-  </ul>
-  <div [ngbNavOutlet]="nav" class="mt-2"></div>
-</div>
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Händler</a>
+    <ng-template ngbNavContent>
+      <app-salesman></app-salesman>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Kunde</a>
+    <ng-template ngbNavContent>
+      <app-client></app-client>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

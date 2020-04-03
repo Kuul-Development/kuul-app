@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {faShoppingBag, faUser, faBars, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faUser, faBicycle, faStore, faCompressAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,8 @@ import {faShoppingBag, faUser, faBars, faSearch} from '@fortawesome/free-solid-s
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  faBars = faBars;
+  faBicycle = faBicycle;
   faUser = faUser;
-  faShoppingBag = faShoppingBag;
-  faSearch = faSearch;
+  faStore = faStore;
+  faCompressAlt = faCompressAlt;
 }
