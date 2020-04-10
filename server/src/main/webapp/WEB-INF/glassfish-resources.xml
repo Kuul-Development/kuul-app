@@ -10,3 +10,4 @@
     </jdbc-connection-pool>
     <jdbc-resource pool-name="kuulDBPool" jndi-name="jdbc/kuulDatabase"></jdbc-resource>
 </resources>
+
