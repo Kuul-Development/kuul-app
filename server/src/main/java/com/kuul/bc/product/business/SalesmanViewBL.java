@@ -2,12 +2,14 @@ package com.kuul.bc.product.business;
 
 import com.kuul.bc.product.dto.Product;
 import com.kuul.bc.product.dto.Salesman;
+import com.kuul.bc.product.ejb.SalesmanPersistence;
+import com.kuul.bc.product.entity.SalesmanEntity;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -16,6 +18,9 @@ import java.util.stream.Collectors;
 public class SalesmanViewBL {
 
     private static Map<Salesman, List<Product>> catalogue = new HashMap<>();
+
+    @Inject
+    private SalesmanPersistence salesmanPersistence;
 
     /**
      * Add a salesman to the catalogue
@@ -29,8 +34,8 @@ public class SalesmanViewBL {
     /**
      * Get all salesmen from the catalogue
      */
-    public Set<Salesman> getAllSalesman() {
-        return catalogue.keySet();
+    public List<SalesmanEntity> getAllSalesman() {
+        return salesmanPersistence.findAll();
     }
 
     /**

@@ -3,6 +3,7 @@ package com.kuul.bc.product.facade.unit;
 import com.kuul.bc.product.business.SalesmanViewBL;
 import com.kuul.bc.product.dto.Product;
 import com.kuul.bc.product.dto.Salesman;
+import com.kuul.bc.product.entity.SalesmanEntity;
 import com.kuul.bc.product.facade.SalesmanViewFacade;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +50,7 @@ public class SalesmanViewFacadeUnitTest {
     @Test
     public void shouldGetAllSalesman() {
         // given
-        final Set<Salesman> allSalesman = new HashSet<>();
+        final List<SalesmanEntity> allSalesman = new ArrayList<>();
 
         Mockito.when(salesmanViewBL.getAllSalesman()).thenReturn(allSalesman);
 

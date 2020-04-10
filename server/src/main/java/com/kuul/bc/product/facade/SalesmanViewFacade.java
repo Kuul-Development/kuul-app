@@ -1,8 +1,8 @@
 package com.kuul.bc.product.facade;
 
-import com.kuul.bc.product.dto.Product;
-import com.kuul.bc.product.dto.Salesman;
 import com.kuul.bc.product.business.SalesmanViewBL;
+import com.kuul.bc.product.dto.Product;
+import com.kuul.bc.product.entity.SalesmanEntity;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -13,7 +13,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Presentation layer for the salesman view
@@ -23,6 +22,7 @@ public class SalesmanViewFacade {
 
     @Inject
     private SalesmanViewBL salesmanViewBL;
+
 
     /**
      * Add a salesman to the catalogue
@@ -39,7 +39,7 @@ public class SalesmanViewFacade {
     @GET
     @Path("allsalesmen")
     public Response getAllSalesmen() {
-        Set<Salesman> allSalesmen = salesmanViewBL.getAllSalesman();
+        List<SalesmanEntity> allSalesmen = salesmanViewBL.getAllSalesman();
         return Response.ok(allSalesmen, MediaType.APPLICATION_JSON)
                        .build();
     }
