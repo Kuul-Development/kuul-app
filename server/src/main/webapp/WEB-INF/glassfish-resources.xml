@@ -3,7 +3,7 @@
 <resources>
     <jdbc-connection-pool datasource-classname="org.postgresql.ds.PGSimpleDataSource" name="kuulDBPool" res-type="javax.sql.DataSource">
         <property name="user" value="kuulpostgres"></property>
-        <property name="password" value="${DATABASE_PASSWORD}"></property>
+        <property name="password" value="${ENV=DATABASE_PASSWORD}"></property>
         <property name="databaseName" value="postgres"></property>
         <property name="serverName" value="kuuldatabase.c49da27b0mab.us-west-2.rds.amazonaws.com"></property>
         <property name="portNumber" value="5432"></property>
