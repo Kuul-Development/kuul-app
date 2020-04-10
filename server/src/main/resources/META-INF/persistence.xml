@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns:xsi="http://xmlns.jcp.org/xml/ns/persistence" version="2.1"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <persistence-unit name="NewPersistenceUnit" transaction-type="JTA">
+        <jta-data-source>java:app/jdbc/kuulDatabase</jta-data-source>
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+
+        <class>com.kuul.bc.product.entity.SalesmanEntity</class>
+
+    </persistence-unit>
+</persistence>
