@@ -18,24 +18,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-multipart</artifactId>
-            <version>${version.jersey}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
+            <artifactId>jersey-container-servlet</artifactId>
             <version>${version.jersey}</version>
-            <scope>provided</scope>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
             <version>${version.jersey}</version>
-            <scope>provided</scope>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
