@@ -39,10 +39,9 @@ public class ClientViewBLUnitTest {
 
         // then
         assertThat(result.size()).isEqualTo(2);
-        assertThat(result.get(0).getSalesman()).isEqualTo("bakery");
-        assertThat(result.get(0).getProducts().size()).isEqualTo(2);
-        assertThat(result.get(1).getSalesman()).isEqualTo("butchery");
-        assertThat(result.get(1).getProducts().size()).isEqualTo(1);
+        assertThat(result).extracting(Catalogue::getSalesman).containsExactlyInAnyOrder("bakery", "butchery");
+        assertThat(result).filteredOn(r->r.getSalesman().equals("bakery")).flatExtracting(Catalogue::getProducts).hasSize(2);
+        assertThat(result).filteredOn(r->r.getSalesman().equals("butchery")).flatExtracting(Catalogue::getProducts).hasSize(1);
     }
 
     @Test
