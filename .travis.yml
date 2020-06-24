@@ -18,7 +18,7 @@ matrix:
         - zip -r kuul-quarkus-server.zip .
         # the sonar analysis is triggered for the whole project (including frontend)
         - cd ..
-        - sonar-scanner
+        # - sonar-scanner
       deploy:
         provider: elasticbeanstalk
         access_key_id: ${AWS_ACCESS_KEY_ID}
@@ -28,8 +28,8 @@ matrix:
         bucket: "kuul-server"
         edge: true # opt in to dpl v2
         zip_file: server/kuul-quarkus-server.zip
-        #on:
-        #  branch: master
+        on:
+          branch: switch_to_quarkus
 
     - language: node_js
       dist: xenial
