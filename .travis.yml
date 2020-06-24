@@ -9,8 +9,6 @@ matrix:
       addons:
         sonarcloud:
           organization: "kuul-development"
-      install:
-        - npm install typescript
       before_script:
         - cd server
       script:
@@ -18,7 +16,7 @@ matrix:
         - zip -r kuul-quarkus-server.zip .
         # the sonar analysis is triggered for the whole project (including frontend)
         - cd ..
-        # - sonar-scanner
+        - sonar-scanner
       deploy:
         provider: elasticbeanstalk
         access_key_id: ${AWS_ACCESS_KEY_ID}
@@ -29,7 +27,7 @@ matrix:
         edge: true # opt in to dpl v2
         zip_file: server/kuul-quarkus-server.zip
         on:
-          branch: switch_to_quarkus
+          branch: master
 
     - language: node_js
       dist: xenial
