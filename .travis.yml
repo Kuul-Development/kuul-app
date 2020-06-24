@@ -23,8 +23,8 @@ matrix:
         provider: elasticbeanstalk
         access_key_id: ${AWS_ACCESS_KEY_ID}
         secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-        env: "KuulApp-env"
-        app: "kuul-app"
+        env: "kuul-app-env-v5"
+        app: "kuul-app-v4"
         bucket: "kuul-server"
         edge: true # opt in to dpl v2
         zip_file: server/kuul-quarkus-server.zip
